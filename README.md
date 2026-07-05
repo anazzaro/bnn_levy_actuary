@@ -5,4 +5,4 @@ Bayesian Neural Network with Lévy Noise and JS Regularization for actuarial res
 ## Installation
 
 ```bash
-pip install .
+pip install git+https://github.com/anazzaro/bnn_levy_actuary.git
