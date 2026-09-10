@@ -12,7 +12,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/antonionazzaro/bnn_levy_actuary",
-    packages=find_packages(),
+    packages=py_modules(),
     install_requires=[
         "numpy>=1.21.0",
         "scipy>=1.7.0",
