@@ -13,12 +13,14 @@ class BayesianNN(nn.Module):
     Stochastic MLP with:
     - Bayesian dropout (p = 0.3)
     - Swish activation
-    - Lévy noise injection (alpha = 1.7)
+    - Tempered stable Lévy noise injection
+      (stability parameter alpha = 1.7, truncation level M = 10)
     """
-    def __init__(self, levy_alpha=1.7, levy_scale=0.01, dropout_rate=0.3):
+    def __init__(self, levy_alpha=1.7, levy_scale=0.01, levy_M=10.0, dropout_rate=0.3):
         super().__init__()
         self.levy_alpha = levy_alpha
         self.levy_scale = levy_scale
+        self.levy_M = levy_M
         self.dropout_rate = dropout_rate
         
         self.net = nn.Sequential(
@@ -35,7 +37,10 @@ class BayesianNN(nn.Module):
         out = self.net(x)
         if sample_levy:
             n = out.shape[0]
+            # Generate stable Lévy noise
             noise = levy_stable.rvs(self.levy_alpha, 0, scale=self.levy_scale, size=n)
+            # Apply truncation at ±M
+            noise = np.clip(noise, -self.levy_M, self.levy_M)
             noise = torch.tensor(noise, dtype=torch.float32).reshape(-1, 1)
             out = out + noise
         return out
