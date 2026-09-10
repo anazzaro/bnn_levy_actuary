@@ -1,6 +1,6 @@
 # bnn_levy_actuary
 
-Bayesian Neural Network with Lévy Noise and JS Regularization for actuarial reserve estimation under Solvency II.
+L\'evy-Regularized Bayesian Neural Networks for Fair Reserve Estimation under Solvency II
 
 ## Installation
 
