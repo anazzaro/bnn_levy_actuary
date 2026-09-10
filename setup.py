@@ -13,6 +13,10 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/anazzaro/bnn_levy_actuary",
     packages=find_packages(),
+    include_package_data=True,
+    package_data={
+        "bnn_levy_actuary": ["DATI_EIOPA_30NOVEMBRE2024.csv"],
+    },
     install_requires=[
         "numpy>=1.21.0",
         "scipy>=1.7.0",
