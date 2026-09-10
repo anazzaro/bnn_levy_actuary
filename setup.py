@@ -8,7 +8,7 @@ setup(
     version="0.1.0",
     author="Antonio Nazzaro",
     author_email="info@antonionazzaro.it",
-    description="Bayesian Neural Network with Lévy Noise for Actuarial Reserve Estimation",
+    description="Tempered stable Lévy-regularized Bayesian neural networks for fair reserve estimation under Solvency II.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/antonionazzaro/bnn_levy_actuary",
